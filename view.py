@@ -67,18 +67,25 @@ class ColorView:
         right = ttk.Frame(content, style="Panel.TFrame", padding=20)
         right.pack(side="left", fill="both", expand=True, padx=(10, 0))
 
-        self.canvas = tk.Canvas(left, height=260, highlightthickness=0, bd=0)
+        self.canvas = tk.Canvas(left, height=180, highlightthickness=0, bd=0)
         self.canvas.pack(fill="x", pady=(0, 10))
 
         self.hex_var = tk.StringVar()
         hex_row = ttk.Frame(left, style="Panel.TFrame")
         hex_row.pack(fill="x", pady=(0, 10))
         ttk.Label(hex_row, text="HEX:", style="Panel.TLabel").pack(side="left")
-        ttk.Entry(hex_row, textvariable=self.hex_var, state="readonly",
-                  font=("Consolas", 12)).pack(side="left", fill="x", expand=True, padx=(8, 0))
+        self.hex_entry = ttk.Entry(hex_row, textvariable=self.hex_var,
+                                    state="readonly", font=("Consolas", 12))
+        self.hex_entry.pack(side="left", fill="x", expand=True, padx=(8, 0))
+        self.hex_entry.bind("<Control-c>", self._copy_hex)
+        self.hex_entry.bind("<Control-C>", self._copy_hex)
+        self.hex_entry.bind("<Control-Insert>", self._copy_hex)
+
+        ttk.Label(left, text="Палитра", style="Section.TLabel").pack(anchor="w", pady=(10, 6))
+        self._build_palette(left)
 
         self.warning = ttk.Label(left, text="", style="Warn.TLabel", wraplength=400)
-        self.warning.pack(anchor="w", pady=(0, 10))
+        self.warning.pack(anchor="w", pady=(10, 10))
 
         opts = ttk.Frame(left, style="Panel.TFrame")
         opts.pack(fill="x", pady=(5, 0))
@@ -107,14 +114,33 @@ class ColorView:
         self._build_cmyk(right)
         self._build_hls(right)
 
+    def _build_palette(self, parent):
+        palette = tk.Frame(parent, bg=PANEL, highlightthickness=0, bd=0)
+        palette.pack(anchor="w", fill="x")
+
+        hues = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330]
+        lightness = [0.85, 0.70, 0.55, 0.35, 0.20]
+        saturation = 1.0
+
+        for row, l in enumerate(lightness):
+            for col, h in enumerate(hues):
+                r, g, b = hls_to_rgb(h, l, saturation)
+                color = self._rgb_hex(r, g, b)
+                btn = tk.Button(
+                    palette, bg=color, activebackground=color,
+                    width=2, height=1, bd=1, relief="flat",
+                    highlightthickness=0,
+                    command=lambda rr=r, gg=g, bb=b: self.on_palette_click(rr, gg, bb),
+                )
+                btn.grid(row=row, column=col, padx=1, pady=1)
+
     def _make_slider_row(self, parent, row, name, var, lo, hi, res, cmd):
         ttk.Label(parent, text=name, style="Panel.TLabel", width=3).grid(
             row=row, column=0, sticky="w", pady=6)
 
         s = tk.Scale(parent, from_=lo, to=hi, resolution=res, orient="horizontal",
                      variable=var, showvalue=False, length=380,
-                     bg=KNOB,
-                     fg=FG,
+                     bg=KNOB, fg=FG,
                      troughcolor=PANEL,
                      activebackground=ACCENT,
                      highlightthickness=0, bd=0,
@@ -160,20 +186,13 @@ class ColorView:
 
     def _update_troughs(self):
         r, g, b = self.vm.r, self.vm.g, self.vm.b
-
-        for i, sl in enumerate(self.rgb_sliders):
-            base = [r, g, b]
-            left = base[:]
-            right = base[:]
-            left[i] = 0
-            right[i] = 255
-            sl.configure(troughcolor=self._rgb_hex(*base))
-
-        for i, sl in enumerate(self.cmyk_sliders):
+        for sl in self.rgb_sliders + self.cmyk_sliders + self.hls_sliders:
             sl.configure(troughcolor=self._rgb_hex(r, g, b))
 
-        for i, sl in enumerate(self.hls_sliders):
-            sl.configure(troughcolor=self._rgb_hex(r, g, b))
+    def _copy_hex(self, event=None):
+        self.root.clipboard_clear()
+        self.root.clipboard_append(self.hex_var.get())
+        return "break"
 
     def on_rgb_slider(self, idx):
         self.vm.set_rgb(self.rgb_vars[0].get(), self.rgb_vars[1].get(), self.rgb_vars[2].get())
@@ -185,6 +204,10 @@ class ColorView:
 
     def on_hls_slider(self, idx):
         self.vm.set_hls(*[v.get() for v in self.hls_vars])
+        self.refresh()
+
+    def on_palette_click(self, r, g, b):
+        self.vm.set_rgb(r, g, b)
         self.refresh()
 
     def on_separation(self):
@@ -201,7 +224,7 @@ class ColorView:
         hex_color = self.vm.get_hex()
         self.canvas.delete("all")
         w = self.canvas.winfo_width() or 400
-        h = self.canvas.winfo_height() or 260
+        h = self.canvas.winfo_height() or 180
         self.canvas.create_rectangle(0, 0, w, h, fill=hex_color, outline="")
         self.canvas.configure(bg=hex_color)
 
