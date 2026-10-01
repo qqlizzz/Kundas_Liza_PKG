@@ -1,0 +1,41 @@
+﻿filename,format,width,height,dpi,color_depth,compression,exif,status,extra
+Fig1.15(a).bmp,BMP,512,480,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig1.15(a).png,PNG,512,480,N/A,8,,,OK,"Тип цвета: Indexed, Interlace: 0"
+Fig1.15(b).BMP,BMP,1184,496,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig10.15(a).BMP,BMP,360,414,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig10.29(a).bmp,BMP,400,480,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig2.19(a).BMP,BMP,1024,1024,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig2.19(a).gif,GIF,1024,1024,N/A,8,LZW,,OK,Палитра: 256 цветов
+Fig2.19(a).jpg,JPEG,1024,1024,72,24,Baseline,,OK,
+Fig2.19(a).png,PNG,1024,1024,N/A,8,,,OK,"Тип цвета: Indexed, Interlace: 0"
+Fig2.19.pcx,PCX,1024,1024,0,64,RLE,,OK,"Версия: 5, Бит на плоскость: 8"
+Fig2.19.tiff,TIFF,1024,1024,1,8,None,,OK,
+Fig2.22(a).BMP,BMP,300,300,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig3.15(a)1top.bmp,BMP,500,500,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig3.15(a)2.bmp,BMP,500,500,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig3.15(a)3.bmp,BMP,500,500,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig3.15(a)4.bmp,BMP,500,500,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig3.27(a).BMP,BMP,370,457,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig3.35(a).bmp,BMP,500,500,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig3.37(a).bmp,BMP,455,440,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig3.45(a).bmp,BMP,937,932,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig3.45(a).gif,GIF,937,932,N/A,8,LZW,,OK,Палитра: 256 цветов
+Fig3.45(a).jpg,JPEG,937,932,72,24,Baseline,,OK,
+Fig3.45(a).png,PNG,937,932,N/A,8,,,OK,"Тип цвета: Indexed, Interlace: 0"
+Fig3.45.pcx,PCX,937,932,0,64,RLE,,OK,"Версия: 5, Бит на плоскость: 8"
+Fig3.45.tiff,TIFF,937,932,1,8,None,,OK,
+Fig4.19(a).bmp,BMP,508,444,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig4.20(a).BMP,BMP,732,1028,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig4.28(a).BMP,BMP,464,538,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig5.04(i).bmp,BMP,256,256,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig5.08(a).bmp,BMP,464,448,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig5.08(b).bmp,BMP,464,448,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig5.10(a).bmp,BMP,455,440,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig9.11(a).bmp,BMP,315,238,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig9.14(a).bmp,BMP,221,269,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig9.16(a).bmp,BMP,512,512,0.0,8,BI_RGB,,OK,Палитра: 256 цветов
+Fig9.16(a).gif,GIF,512,512,N/A,8,LZW,,OK,Палитра: 256 цветов
+Fig9.16(a).jpg,JPEG,512,512,72,24,Baseline,,OK,
+Fig9.16.pcx,PCX,512,512,0,64,RLE,,OK,"Версия: 5, Бит на плоскость: 8"
+Fig9.16.png,PNG,512,512,N/A,8,,,OK,"Тип цвета: Indexed, Interlace: 0"
+Fig9.16.tiff,TIFF,512,512,1,8,None,,OK,
